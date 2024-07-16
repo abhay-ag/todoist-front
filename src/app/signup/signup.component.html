@@ -1,1 +1,32 @@
-<p>signup works!</p>
+<div class="signup-container">
+  <div class="signup-card">
+    <h1>Sign Up</h1>
+
+    <form class="form">
+      <div class="form-item">
+        <label for="email">Email:</label>
+        <input
+          [(ngModel)]="userData.email"
+          name="email"
+          type="email"
+          [required]="true"
+        />
+      </div>
+      <div class="form-item">
+        <label for="password">Password:</label>
+        <input
+          [(ngModel)]="userData.password"
+          name="password"
+          type="password"
+          [required]="true"
+        />
+      </div>
+      <button (click)="signupUser()">Submit</button>
+    </form>
+    <div class="small">
+      Already registered?
+
+      <a routerLink="/login">Login</a>
+    </div>
+  </div>
+</div>

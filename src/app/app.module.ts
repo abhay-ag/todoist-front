@@ -9,6 +9,8 @@ import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     SignupComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterOutlet, FormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, RouterOutlet, FormsModule, StoreModule.forRoot({}, {})],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

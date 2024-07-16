@@ -1,1 +1,46 @@
-<p>todo-card works!</p>
+<div class="todo-card">
+  <div class="todo-title">
+    <h2
+      (click)="toggleDisabled()"
+      (blur)="blurred()"
+      [contentEditable]="!titleDisabled"
+      (keydown.enter)="setTitle($event)"
+    >
+      {{ todo.title }}
+    </h2>
+    <p
+      (click)="toggleContentEditing()"
+      (blur)="blurred()"
+      [contentEditable]="!contentDisabled"
+      (keydown.enter)="setContent($event)"
+    >
+      {{ todo.content }}
+    </p>
+  </div>
+  <select
+    name="priority"
+    [(ngModel)]="todo.priority"
+    (change)="onChange('Update Priority')"
+  >
+    <option value="P-0">P-0</option>
+    <option value="P-1">P-1</option>
+    <option value="P-2">P-2</option>
+    <option value="P-3">P-3</option>
+    <option value="P-4">P-4</option>
+  </select>
+  <input
+    name="date"
+    type="date"
+    [(ngModel)]="todo.dueDate"
+    (change)="onChange('Update Due Date')"
+  />
+  <select
+    name="status"
+    [(ngModel)]="todo.status"
+    (change)="onChange('Update Status')"
+  >
+    <option value="Completed">Completed</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Todo">Todo</option>
+  </select>
+</div>

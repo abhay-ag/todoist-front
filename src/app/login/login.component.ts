@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +15,13 @@ export class LoginComponent {
 
   loginUser() {
     this._authService.loginUser(this.userData).subscribe(
-      (e) => {
+      (e: any) => {
         if (e.token) {
           localStorage.setItem('token', e.token);
           this._router.navigate(['/todo']);
         }
       },
-      (err) => {
+      (err: any) => {
         console.log(err);
       }
     );
