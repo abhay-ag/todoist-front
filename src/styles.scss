@@ -67,3 +67,36 @@ div.small {
     color: inherit;
   }
 }
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  &.P-0 {
+    background-color: #d9363e;
+  }
+  &.P-1 {
+    background-color: #ff4d4f;
+  }
+  &.P-2 {
+    background-color: #ff7875;
+  }
+  &.P-3 {
+    background-color: #ffa39e;
+  }
+  &.P-4 {
+    background-color: #ffccc7;
+  }
+
+  &.inp {
+    background-color: #1677ff;
+  }
+
+  &.todo {
+    background-color: #faad14;
+  }
+  &.completed {
+    background-color: #52c41a;
+  }
+}

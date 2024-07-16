@@ -1,5 +1,21 @@
 <div class="todo-card">
-  <div class="todo-created-at">Created at: {{ todo.createdAt | cdate }}</div>
+  <div class="todo-created-at">
+    <div
+      class="circle"
+      [class.P-0]="p0"
+      [class.P-1]="p1"
+      [class.P-2]="p2"
+      [class.P-3]="p3"
+      [class.P-4]="p4"
+    ></div>
+    <div
+      class="circle"
+      [class.inp]="imp"
+      [class.todo]="td"
+      [class.completed]="comp"
+    ></div>
+    Created at: {{ todo.createdAt | cdate }}
+  </div>
   <div class="todo-title">
     <h2
       (click)="toggleDisabled()"

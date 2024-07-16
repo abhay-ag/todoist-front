@@ -166,4 +166,31 @@ export class TodoCardComponent {
         return;
     }
   }
+
+  // circle classes booleans
+
+  get p0(): boolean {
+    return this.todo.priority === 'P-0';
+  }
+  get p1(): boolean {
+    return this.todo.priority === 'P-1';
+  }
+  get p2(): boolean {
+    return this.todo.priority === 'P-2';
+  }
+  get p3(): boolean {
+    return this.todo.priority === 'P-3';
+  }
+  get p4(): boolean {
+    return this.todo.priority === 'P-4';
+  }
+  get imp(): boolean {
+    return this.todo.status === 'In Progress';
+  }
+  get comp(): boolean {
+    return this.todo.status === 'Completed';
+  }
+  get td(): boolean {
+    return this.todo.status === 'Todo';
+  }
 }
