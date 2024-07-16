@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './states/todo.reducer';
+import { DatePipe } from '@angular/common';
+import { CdatePipe } from './cdate.pipe';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { todoReducer } from './states/todo.reducer';
     TodoCardComponent,
     LoginComponent,
     SignupComponent,
+    CdatePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
     FormsModule,
+    DatePipe,
     StoreModule.forRoot({
       todos: todoReducer,
     }),
