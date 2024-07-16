@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Todo } from '../interfaces/TodoInterface';
 import { Store } from '@ngrx/store';
 import { addTodo, loadTodo } from '../states/todo.action';
-import { selectAllTodos } from '../states/todo.selectors';
+import { filtereTodosByStatus, selectAllTodos } from '../states/todo.selectors';
 
 @Component({
   selector: 'app-todo',
@@ -12,7 +12,6 @@ import { selectAllTodos } from '../states/todo.selectors';
   styleUrl: './todo.component.scss',
 })
 export class TodoComponent implements OnInit {
-  todos: any[] = [];
   todoData: any = {
     dueDate: new Date().toISOString().split('T')[0],
     priority: 'P-4',
@@ -28,6 +27,24 @@ export class TodoComponent implements OnInit {
   }
 
   constructor(private _todoService: TodoService, private store: Store) {
+    this.todos$ = this.store.select(selectAllTodos);
+  }
+
+  filterTodos(value: any) {
+    const val = value.target.value;
+    if (val !== '--')
+      this.todos$ = this.store.select(filtereTodosByStatus(value.target.value));
+    else {
+      this.todos$ = this.store.select(selectAllTodos);
+    }
+  }
+
+  sortTodos(value: any) {
+    const val = value.target.value;
+    
+  }
+
+  clearFilters() {
     this.todos$ = this.store.select(selectAllTodos);
   }
 
@@ -49,7 +66,6 @@ export class TodoComponent implements OnInit {
     this._todoService.addTodo(this.todoData).subscribe((e: any) => {
       this.store.dispatch(addTodo({ todo: e.todo }));
       this.setFormOpen();
-      
     });
   }
 

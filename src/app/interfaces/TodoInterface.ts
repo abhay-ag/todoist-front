@@ -32,6 +32,6 @@ export const initialTodoState: todoState = {
 export enum SortCriteria {
   DUE_DATE_ASC = 'ddasc',
   DUE_DATE_DSC = 'dddsc',
-  STATUS_ASC = 'stasc',
-  STATUS_DSC = 'stdsc',
+  PRIORITY_ASC = 'stasc',
+  PRIORITY_DSC = 'stdsc',
 }

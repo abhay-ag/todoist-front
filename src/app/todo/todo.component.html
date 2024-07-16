@@ -57,6 +57,26 @@
       </form>
     </div>
   </div>
+  <div class="filter-row">
+    <div class="filter-section">
+      Filter By:
+      <select class="small" (change)="filterTodos($event)">
+        <option value="--">--select--</option>
+        <option value="Completed">Completed</option>
+        <option value="Todo">Todo</option>
+        <option value="In Progress">In Progress</option>
+      </select>
+    </div>
+    <div class="filter-section">
+      Sort By:
+      <select class="small" (change)="filterTodos($event)">
+        <option value="--">--select--</option>
+        <option value="Completed">Completed</option>
+        <option value="Todo">Todo</option>
+        <option value="In Progress">In Progress</option>
+      </select>
+    </div>
+  </div>
   <div class="main-content">
     <app-todo-card
       *ngFor="let todo of todos$ | async"
