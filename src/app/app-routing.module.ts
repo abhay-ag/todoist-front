@@ -7,9 +7,14 @@ import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'todo', component: TodoComponent, canActivate: [authGuard] },
+  { path: 'login', component: LoginComponent, title: 'Todoist | Login' },
+  { path: 'signup', component: SignupComponent, title: 'Todoist | Signup' },
+  {
+    path: 'todo',
+    component: TodoComponent,
+    canActivate: [authGuard],
+    title: 'Todoist | Dashboard',
+  },
 ];
 
 @NgModule({

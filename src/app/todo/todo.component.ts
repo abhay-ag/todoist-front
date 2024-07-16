@@ -23,6 +23,8 @@ export class TodoComponent implements OnInit {
   };
 
   todos$: Observable<Todo[]>;
+  filterVal: string = '--';
+  sortVal: any = '--';
 
   createTodoFormOpen: boolean = false;
 
@@ -36,21 +38,31 @@ export class TodoComponent implements OnInit {
 
   filterTodos(value: any) {
     const val = value.target.value;
-    if (val !== '--')
+    this.filterVal = val;
+    if (val !== '--') {
       this.todos$ = this.store.select(filtereTodosByStatus(value.target.value));
-    else {
+    } else {
       this.todos$ = this.store.select(selectAllTodos);
     }
   }
 
   sortTodos(value: any) {
     const val = value.target.value;
-
-    this.todos$ = this.store.select(sortTodos(val));
+    this.sortVal = val;
+    if (val !== '--') this.todos$ = this.store.select(sortTodos(val));
+    else {
+      this.todos$ = this.store.select(selectAllTodos);
+    }
   }
 
-  clearFilters() {
+  clearfilters() {
+    this.filterVal = '--';
+    this.sortVal = '--';
     this.todos$ = this.store.select(selectAllTodos);
+  }
+
+  get showClearFilter(): boolean {
+    return this.filterVal !== '--' || this.sortVal !== '--';
   }
 
   get buttonDisabled(): boolean {

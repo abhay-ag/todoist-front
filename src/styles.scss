@@ -30,6 +30,17 @@ button {
   padding: 8px 12px;
   border-radius: 8px;
   background-color: #faad14;
+
+  &.icon {
+    border-radius: 50%;
+    padding: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
 }
 
 .form {

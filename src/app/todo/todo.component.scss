@@ -18,7 +18,15 @@
     padding: 12px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 24px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      justify-content: unset;
+      align-items: flex-end;
+      gap: 8px;
+    }
 
     .filter-section {
       display: flex;

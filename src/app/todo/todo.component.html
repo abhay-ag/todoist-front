@@ -60,7 +60,7 @@
   <div class="filter-row">
     <div class="filter-section">
       Filter By:
-      <select class="small" (change)="filterTodos($event)">
+      <select [value]="filterVal" class="small" (change)="filterTodos($event)">
         <option value="--">--select--</option>
         <option value="Completed">Completed</option>
         <option value="Todo">Todo</option>
@@ -69,7 +69,7 @@
     </div>
     <div class="filter-section">
       Sort By:
-      <select class="small" (change)="sortTodos($event)">
+      <select [value]="sortVal" class="small" (change)="sortTodos($event)">
         <option value="--">--select--</option>
         <option value="ddasc">Due Sooner</option>
         <option value="dddsc">Due Later</option>
@@ -77,6 +77,9 @@
         <option value="ptdsc">High priority first</option>
       </select>
     </div>
+    <button *ngIf="showClearFilter" class="icon" (click)="clearfilters()">
+      X
+    </button>
   </div>
   <div class="main-content">
     <app-todo-card
