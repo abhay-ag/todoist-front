@@ -5,6 +5,7 @@ export interface Todo {
   priority: any | 'P-0' | 'P-1' | 'P-2' | 'P-3' | 'P-4';
   status: any | 'Completed' | 'In Progress' | 'Todo';
   dueDate: string;
+  createdAt: string;
 }
 
 export interface TodoEdit {

@@ -6,7 +6,7 @@ const _todoReducer = createReducer(
   initialTodoState,
   on(addTodo, (state, { todo }) => ({
     ...state,
-    todos: [...state.todos, todo],
+    todos: [todo, ...state.todos],
   })),
   on(updateTodo, (state, { edit }) => {
     let idx = -1;

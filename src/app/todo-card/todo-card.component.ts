@@ -31,7 +31,10 @@ export class TodoCardComponent {
   constructor(private _todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.todo.dueDate = this.todo.dueDate.split('T')[0];
+    this.todo = {
+      ...this.todo,
+      dueDate: this.todo.dueDate.split('T')[0],
+    };
 
     this.deepCopyTodo();
   }
@@ -41,13 +44,13 @@ export class TodoCardComponent {
   }
 
   setTitle(e: any) {
-    this.todo.title = e.target.innerText;
+    this.todo = { ...this.todo, title: e.target.innerText };
     this.titleDisabled = true;
     this.onChange('Update Title');
   }
 
   setContent(e: any) {
-    this.todo.content = e.target.innerText;
+    this.todo = { ...this.todo, content: e.target.innerText };
     this.contentDisabled = true;
     this.onChange('Update Content');
   }
