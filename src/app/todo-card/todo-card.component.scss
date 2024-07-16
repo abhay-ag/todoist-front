@@ -26,6 +26,12 @@
     border-radius: 8px;
   }
 
+  button.view-history {
+    position: absolute;
+    right: 12px;
+    top: -10px;
+  }
+
   .todo-title {
     display: flex;
     flex: 1;
@@ -41,6 +47,11 @@
     & {
       flex-direction: column;
       align-items: stretch;
+    }
+
+    button.view-history {
+      top: 24px;
+      right: 24px;
     }
   }
 }
