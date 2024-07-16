@@ -69,11 +69,12 @@
     </div>
     <div class="filter-section">
       Sort By:
-      <select class="small" (change)="filterTodos($event)">
+      <select class="small" (change)="sortTodos($event)">
         <option value="--">--select--</option>
-        <option value="Completed">Completed</option>
-        <option value="Todo">Todo</option>
-        <option value="In Progress">In Progress</option>
+        <option value="ddasc">Due Sooner</option>
+        <option value="dddsc">Due Later</option>
+        <option value="ptasc">Low priority first</option>
+        <option value="ptdsc">High priority first</option>
       </select>
     </div>
   </div>

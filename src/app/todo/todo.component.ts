@@ -4,7 +4,11 @@ import { Observable } from 'rxjs';
 import { Todo } from '../interfaces/TodoInterface';
 import { Store } from '@ngrx/store';
 import { addTodo, loadTodo } from '../states/todo.action';
-import { filtereTodosByStatus, selectAllTodos } from '../states/todo.selectors';
+import {
+  filtereTodosByStatus,
+  selectAllTodos,
+  sortTodos,
+} from '../states/todo.selectors';
 
 @Component({
   selector: 'app-todo',
@@ -41,7 +45,8 @@ export class TodoComponent implements OnInit {
 
   sortTodos(value: any) {
     const val = value.target.value;
-    
+
+    this.todos$ = this.store.select(sortTodos(val));
   }
 
   clearFilters() {
