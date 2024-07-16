@@ -9,37 +9,34 @@ const _todoReducer = createReducer(
     todos: [todo, ...state.todos],
   })),
   on(updateTodo, (state, { edit }) => {
-    let idx = -1;
-    state.todos.map((el, i) => {
-      if (el._id === edit.id) {
-        idx = i;
-        return;
-      }
-    });
+    const idx = state.todos.findIndex((el) => el._id === edit.id);
+    if (idx === -1) {
+      return state;
+    }
 
     const tds = [...state.todos];
 
     switch (edit.action) {
       case 'Update Priority':
-        tds[idx].priority = edit.newValue;
+        tds[idx] = { ...tds[idx], priority: edit.newValue };
         break;
       case 'Update Status':
-        tds[idx].status = edit.newValue;
+        tds[idx] = { ...tds[idx], status: edit.newValue };
         break;
       case 'Update Content':
-        tds[idx].content = edit.newValue;
+        tds[idx] = { ...tds[idx], content: edit.newValue };
         break;
       case 'Update Title':
-        tds[idx].title = edit.newValue;
+        tds[idx] = { ...tds[idx], title: edit.newValue };
         break;
       case 'Update Due Date':
-        tds[idx].dueDate = edit.newValue;
+        tds[idx] = { ...tds[idx], dueDate: edit.newValue };
         break;
     }
 
     return {
       ...state,
-      todos: [...tds],
+      todos: tds,
     };
   }),
   on(loadTodo, (state, { todos }) => {

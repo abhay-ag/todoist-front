@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { TodoEdit } from '../interfaces/TodoInterface';
+import { Store } from '@ngrx/store';
+import { updateTodo } from '../states/todo.action';
 
 @Component({
   selector: 'app-todo-card',
@@ -28,7 +30,7 @@ export class TodoCardComponent {
 
   @Input() todo: any;
 
-  constructor(private _todoService: TodoService) {}
+  constructor(private _todoService: TodoService, private store: Store) {}
 
   ngOnInit(): void {
     this.todo = {
@@ -66,16 +68,101 @@ export class TodoCardComponent {
             oldValue: this.oldTodo.priority,
           })
           .subscribe((e) => {
-            console.log(e);
+            this.store.dispatch(
+              updateTodo({
+                edit: {
+                  id: this.todo._id,
+                  action: action,
+                  newValue: this.todo.priority,
+                  oldValue: this.oldTodo.priority,
+                },
+              })
+            );
           });
         return;
       case 'Update Status':
+        this._todoService
+          .updateTodo(this.todo._id, {
+            id: this.todo._id,
+            action: action,
+            newValue: this.todo.status,
+            oldValue: this.oldTodo.status,
+          })
+          .subscribe((e) => {
+            this.store.dispatch(
+              updateTodo({
+                edit: {
+                  id: this.todo._id,
+                  action: action,
+                  newValue: this.todo.status,
+                  oldValue: this.oldTodo.status,
+                },
+              })
+            );
+          });
         return;
       case 'Update Content':
+        this._todoService
+          .updateTodo(this.todo._id, {
+            id: this.todo._id,
+            action: action,
+            newValue: this.todo.content,
+            oldValue: this.oldTodo.content,
+          })
+          .subscribe((e) => {
+            this.store.dispatch(
+              updateTodo({
+                edit: {
+                  id: this.todo._id,
+                  action: action,
+                  newValue: this.todo.content,
+                  oldValue: this.oldTodo.content,
+                },
+              })
+            );
+          });
         return;
       case 'Update Title':
+        this._todoService
+          .updateTodo(this.todo._id, {
+            id: this.todo._id,
+            action: action,
+            newValue: this.todo.title,
+            oldValue: this.oldTodo.title,
+          })
+          .subscribe((e) => {
+            this.store.dispatch(
+              updateTodo({
+                edit: {
+                  id: this.todo._id,
+                  action: action,
+                  newValue: this.todo.title,
+                  oldValue: this.oldTodo.title,
+                },
+              })
+            );
+          });
         return;
       case 'Update Due Date':
+        this._todoService
+          .updateTodo(this.todo._id, {
+            id: this.todo._id,
+            action: action,
+            newValue: this.todo.dueDate,
+            oldValue: this.oldTodo.dueDate,
+          })
+          .subscribe((e) => {
+            this.store.dispatch(
+              updateTodo({
+                edit: {
+                  id: this.todo._id,
+                  action: action,
+                  newValue: this.todo.dueDate,
+                  oldValue: this.oldTodo.dueDate,
+                },
+              })
+            );
+          });
         return;
     }
   }
