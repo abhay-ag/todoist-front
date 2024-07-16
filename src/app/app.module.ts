@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { todoReducer } from './states/todo.reducer';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,15 @@ import { StoreModule } from '@ngrx/store';
     LoginComponent,
     SignupComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterOutlet, FormsModule, StoreModule.forRoot({}, {})],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterOutlet,
+    FormsModule,
+    StoreModule.forRoot({
+      todos: todoReducer,
+    }),
+  ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent],
 })

@@ -2,8 +2,8 @@ export interface Todo {
   _id: string;
   title: string;
   content: string;
-  priority: 'P-0' | 'P-1' | 'P-2' | 'P-3' | 'P-4';
-  status: 'Completed' | 'In Progress' | 'Todo';
+  priority: any | 'P-0' | 'P-1' | 'P-2' | 'P-3' | 'P-4';
+  status: any | 'Completed' | 'In Progress' | 'Todo';
   dueDate: string;
 }
 
@@ -17,6 +17,7 @@ export interface TodoEdit {
     | 'Update Due Date';
   oldValue: string;
   newValue: string;
+  id: string;
 }
 
 export interface todoState {

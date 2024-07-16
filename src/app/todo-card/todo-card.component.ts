@@ -57,6 +57,7 @@ export class TodoCardComponent {
       case 'Update Priority':
         this._todoService
           .updateTodo(this.todo._id, {
+            id: this.todo._id,
             action: action,
             newValue: this.todo.priority,
             oldValue: this.oldTodo.priority,
