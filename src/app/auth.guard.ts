@@ -12,3 +12,14 @@ export const authGuard: CanActivateFn = (route, state) => {
   }
   return true;
 };
+
+export const loginGuard: CanActivateFn = (route, state) => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+
+  if (authService.getToken()) {
+    router.navigate(['/todo']);
+    return true;
+  }
+  return true;
+};
