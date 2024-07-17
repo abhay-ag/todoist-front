@@ -4,6 +4,7 @@
     <div style="display: flex; align-items: center; gap: 4px">
       <button (click)="setFormOpen()">New Task</button>
       <button (click)="logout()">Logout</button>
+      <button (click)="exportData()">Export to csv</button>
     </div>
   </div>
   <div *ngIf="createTodoFormOpen" class="overlay">

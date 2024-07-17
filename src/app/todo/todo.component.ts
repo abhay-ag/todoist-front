@@ -10,6 +10,7 @@ import {
   sortTodos,
 } from '../states/todo.selectors';
 import { AuthService } from '../auth.service';
+import { CsvService } from '../csv.service';
 
 @Component({
   selector: 'app-todo',
@@ -36,9 +37,16 @@ export class TodoComponent implements OnInit {
   constructor(
     private _todoService: TodoService,
     private store: Store,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _csvService: CsvService
   ) {
     this.todos$ = this.store.select(selectAllTodos);
+  }
+
+  exportData(): void {
+    this.todos$.subscribe((data) => {
+      this._csvService.exportToCsv(data, 'tasks');
+    });
   }
 
   filterTodos(value: any) {
