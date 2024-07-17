@@ -58,28 +58,54 @@
     </div>
   </div>
   <div class="filter-row">
-    <div class="filter-section">
-      Filter By:
-      <select [value]="filterVal" class="small" (change)="filterTodos($event)">
-        <option value="--">--select--</option>
-        <option value="Completed">Completed</option>
-        <option value="Todo">Todo</option>
-        <option value="In Progress">In Progress</option>
-      </select>
+    <div class="key">
+      <div class="wrapper">
+        <div class="title">
+          <p>Highest</p>
+          <p>Lowest</p>
+        </div>
+        <div class="priority">
+          <div class="circle P-0">P-0</div>
+          <div class="circle P-1">P-1</div>
+          <div class="circle P-2">P-2</div>
+          <div class="circle P-3">P-3</div>
+          <div class="circle P-4">P-4</div>
+        </div>
+      </div>
+      <div class="priority">
+        <div class="circle inp pill">In Progress</div>
+        <div class="circle completed pill">Completed</div>
+        <div class="circle todo pill">Todo</div>
+      </div>
     </div>
-    <div class="filter-section">
-      Sort By:
-      <select [value]="sortVal" class="small" (change)="sortTodos($event)">
-        <option value="--">--select--</option>
-        <option value="ddasc">Due Sooner</option>
-        <option value="dddsc">Due Later</option>
-        <option value="ptasc">Low priority first</option>
-        <option value="ptdsc">High priority first</option>
-      </select>
+    <div class="filters">
+      <div class="filter-section">
+        Filter By:
+        <select
+          [value]="filterVal"
+          class="small"
+          (change)="filterTodos($event)"
+        >
+          <option value="--">--select--</option>
+          <option value="Completed">Completed</option>
+          <option value="Todo">Todo</option>
+          <option value="In Progress">In Progress</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        Sort By:
+        <select [value]="sortVal" class="small" (change)="sortTodos($event)">
+          <option value="--">--select--</option>
+          <option value="ddasc">Due Sooner</option>
+          <option value="dddsc">Due Later</option>
+          <option value="ptasc">Low priority first</option>
+          <option value="ptdsc">High priority first</option>
+        </select>
+      </div>
+      <button *ngIf="showClearFilter" class="icon" (click)="clearfilters()">
+        X
+      </button>
     </div>
-    <button *ngIf="showClearFilter" class="icon" (click)="clearfilters()">
-      X
-    </button>
   </div>
   <div class="main-content">
     <app-todo-card

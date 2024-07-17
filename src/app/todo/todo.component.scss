@@ -1,7 +1,7 @@
 .todo-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 
   .todo-header {
     display: flex;
@@ -15,17 +15,45 @@
   }
 
   .filter-row {
-    padding: 12px;
+    padding: 24px;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     gap: 24px;
 
-    @media screen and (max-width: 768px) {
+    .key {
+      display: flex;
       flex-direction: column;
-      justify-content: unset;
-      align-items: flex-end;
-      gap: 8px;
+      gap: 16px;
+      flex: 1;
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        gap: 2px;
+
+        p {
+          font-size: 12px;
+        }
+
+        .title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .priority {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .filter-section {
@@ -33,6 +61,15 @@
       font-size: 12px;
       align-items: center;
       gap: 8px;
+    }
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: start;
+
+      .filter-section {
+        flex-direction: column;
+        align-items: start;
+      }
     }
   }
 
@@ -82,6 +119,12 @@
       .form {
         width: 100%;
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .main-content {
+      gap: 48px;
     }
   }
 }

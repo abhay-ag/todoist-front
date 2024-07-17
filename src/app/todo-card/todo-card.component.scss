@@ -22,7 +22,7 @@
     padding: 4px 12px;
     background-color: rgba(0, 0, 0, 0.02);
     backdrop-filter: blur(1rem);
-    top: -11px;
+    top: -15px;
     border-radius: 8px;
   }
 
@@ -50,8 +50,10 @@
     }
 
     button.view-history {
-      top: 24px;
-      right: 24px;
+      right: 12px;
+      top: 100%;
+      transform: translateY(-50%);
+      // bottom: -10px;
     }
   }
 }

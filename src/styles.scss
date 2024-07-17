@@ -75,15 +75,22 @@ div.small {
 }
 
 .circle {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 
   &.P-0 {
     background-color: #d9363e;
+    color: white;
   }
   &.P-1 {
     background-color: #ff4d4f;
+    color: white;
   }
   &.P-2 {
     background-color: #ff7875;
@@ -97,6 +104,7 @@ div.small {
 
   &.inp {
     background-color: #1677ff;
+    color: white;
   }
 
   &.todo {
@@ -104,5 +112,12 @@ div.small {
   }
   &.completed {
     background-color: #52c41a;
+    color: white;
+  }
+
+  &.pill {
+    width: unset;
+    border-radius: 8px;
+    padding: 0 8px;
   }
 }
