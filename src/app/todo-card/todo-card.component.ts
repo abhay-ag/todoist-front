@@ -2,7 +2,10 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { TodoEdit } from '../interfaces/TodoInterface';
 import { Store } from '@ngrx/store';
-import { updateTodo } from '../states/todo.action';
+import { loadTodo, updateTodo } from '../states/todo.action';
+import { Observable } from 'rxjs';
+import { loadActions } from '../states/actions.action';
+import { selectAllActions } from '../states/actions.selectors';
 
 @Component({
   selector: 'app-todo-card',
@@ -14,7 +17,7 @@ export class TodoCardComponent {
   @ViewChild('content') contentEl: ElementRef;
   oldTodo: any;
 
-  todoHistory: any[];
+  todoHistory$: Observable<any[]>;
 
   titleDisabled: boolean = true;
   contentDisabled: boolean = true;
@@ -43,12 +46,14 @@ export class TodoCardComponent {
     this.viewingHistory = !this.viewingHistory;
     if (this.viewingHistory) {
       this._todoService.getEdits(this.todo._id).subscribe((e: any) => {
-        this.todoHistory = e.actions.actions;
+        this.store.dispatch(loadActions({ actions: e.actions.actions }));
       });
     }
   }
 
-  constructor(private _todoService: TodoService, private store: Store) {}
+  constructor(private _todoService: TodoService, private store: Store) {
+    this.todoHistory$ = this.store.select(selectAllActions);
+  }
 
   ngOnInit(): void {
     this.todo = {

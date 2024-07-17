@@ -74,7 +74,7 @@
   <div class="history-popup" [class.active]="viewingHistory">
     <h4>Change history</h4>
     <div class="history-view">
-      <div class="history-item" *ngFor="let action of todoHistory">
+      <div class="history-item" *ngFor="let action of todoHistory$ | async">
         <div class="list-header">
           <div class="list-thumb"></div>
           <span class="title">{{ action.action }}</span>
