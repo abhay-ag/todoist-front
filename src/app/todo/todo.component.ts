@@ -9,6 +9,7 @@ import {
   selectAllTodos,
   sortTodos,
 } from '../states/todo.selectors';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-todo',
@@ -32,7 +33,11 @@ export class TodoComponent implements OnInit {
     this.createTodoFormOpen = !this.createTodoFormOpen;
   }
 
-  constructor(private _todoService: TodoService, private store: Store) {
+  constructor(
+    private _todoService: TodoService,
+    private store: Store,
+    private _authService: AuthService
+  ) {
     this.todos$ = this.store.select(selectAllTodos);
   }
 
@@ -44,6 +49,10 @@ export class TodoComponent implements OnInit {
     } else {
       this.todos$ = this.store.select(selectAllTodos);
     }
+  }
+
+  logout() {
+    this._authService.signOutUser();
   }
 
   sortTodos(value: any) {
