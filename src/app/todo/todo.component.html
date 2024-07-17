@@ -1,12 +1,12 @@
 <div class="todo-container">
   <div class="todo-header">
     <h1>Todoist</h1>
-    <button (click)="setFormOpen()">New Todo</button>
+    <button (click)="setFormOpen()">New Task</button>
   </div>
   <div *ngIf="createTodoFormOpen" class="overlay">
     <div class="form-container">
       <div class="form-header">
-        <h2 style="font-weight: 600">Add Todo</h2>
+        <h2 style="font-weight: 600">Add Task</h2>
         <button (click)="setFormOpen()">X</button>
       </div>
       <form class="form">
@@ -52,7 +52,7 @@
           type="submit"
           (click)="createTodo()"
         >
-          Add Todo
+          Add Task
         </button>
       </form>
     </div>

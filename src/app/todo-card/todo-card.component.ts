@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { TodoEdit } from '../interfaces/TodoInterface';
 import { Store } from '@ngrx/store';
@@ -10,6 +10,8 @@ import { updateTodo } from '../states/todo.action';
   styleUrl: './todo-card.component.scss',
 })
 export class TodoCardComponent {
+  @ViewChild('title') titleEl: ElementRef;
+  @ViewChild('content') contentEl: ElementRef;
   oldTodo: any;
 
   todoHistory: any[];
@@ -24,6 +26,9 @@ export class TodoCardComponent {
   blurred() {
     this.titleDisabled = true;
     this.contentDisabled = true;
+
+    this.titleEl.nativeElement.innerText = this.oldTodo.title;
+    this.contentEl.nativeElement.innerText = this.oldTodo.content;
   }
 
   toggleContentEditing() {

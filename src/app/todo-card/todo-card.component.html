@@ -26,6 +26,7 @@
   <div class="container">
     <div class="todo-title">
       <h2
+        #title
         (click)="toggleDisabled()"
         (blur)="blurred()"
         [contentEditable]="!titleDisabled"
@@ -34,6 +35,7 @@
         {{ todo.title }}
       </h2>
       <p
+        #content
         (click)="toggleContentEditing()"
         (blur)="blurred()"
         [contentEditable]="!contentDisabled"

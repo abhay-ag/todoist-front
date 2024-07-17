@@ -2,7 +2,7 @@
   width: 100%;
 
   box-sizing: border-box;
-  padding: 12px;
+  padding: 16px;
   border-radius: 12px;
   border: 1px solid #eee;
 
@@ -29,9 +29,8 @@
     line-height: 1;
     font-size: 14px;
     padding: 4px 12px;
-    background-color: rgba(0, 0, 0, 0.02);
-    backdrop-filter: blur(1rem);
-    top: -15px;
+    top: 0;
+    transform: translateY(-50%);
     border-radius: 8px;
     z-index: 22;
   }
@@ -51,6 +50,13 @@
 
     h2 {
       font-weight: 600;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+
+    p {
+      border: 1px solid #eee;
+      border-radius: 4px;
     }
   }
 
