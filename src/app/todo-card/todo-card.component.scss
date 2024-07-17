@@ -7,10 +7,19 @@
   border: 1px solid #eee;
 
   display: flex;
-  align-items: center;
-  gap: 24px;
+  flex-direction: column;
 
   position: relative;
+  z-index: 10;
+
+  transition: all 0.2s ease-out;
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 1;
+  }
 
   .todo-created-at {
     position: absolute;
@@ -24,12 +33,14 @@
     backdrop-filter: blur(1rem);
     top: -15px;
     border-radius: 8px;
+    z-index: 22;
   }
 
   button.view-history {
     position: absolute;
     right: 12px;
     top: -10px;
+    z-index: 22;
   }
 
   .todo-title {
@@ -44,9 +55,77 @@
   }
 
   @media screen and (max-width: 768px) {
-    & {
+    .container {
       flex-direction: column;
       align-items: stretch;
+    }
+  }
+
+  .history-popup {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0;
+    max-height: 0;
+    transition: all 0.2s ease-out;
+
+    &.active {
+      max-height: 15rem;
+      padding: 12px 0;
+      overflow: scroll;
+    }
+    h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .history-view {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .list-thumb {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: black;
+      }
+
+      .history-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        * {
+          font-size: 13px;
+        }
+
+        p {
+          padding: 2px 4px;
+          border-radius: 4px;
+          background-color: rgba(0, 0, 0, 0.05);
+          span {
+            margin: 0 8px;
+          }
+        }
+
+        .list-header {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .title {
+          padding: 2px 4px;
+          border-radius: 4px;
+          background-color: #d48806;
+          color: white;
+          font-weight: 600;
+        }
+
+        @media screen and (max-width: 768px) {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
     }
   }
 }

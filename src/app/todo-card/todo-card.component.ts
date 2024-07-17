@@ -12,6 +12,8 @@ import { updateTodo } from '../states/todo.action';
 export class TodoCardComponent {
   oldTodo: any;
 
+  todoHistory: any[];
+
   titleDisabled: boolean = true;
   contentDisabled: boolean = true;
 
@@ -29,6 +31,17 @@ export class TodoCardComponent {
   }
 
   @Input() todo: any;
+
+  viewingHistory: boolean = false;
+
+  setVisible() {
+    this.viewingHistory = !this.viewingHistory;
+    if (this.viewingHistory) {
+      this._todoService.getEdits(this.todo._id).subscribe((e: any) => {
+        this.todoHistory = e.actions.actions;
+      });
+    }
+  }
 
   constructor(private _todoService: TodoService, private store: Store) {}
 

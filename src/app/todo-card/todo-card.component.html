@@ -20,49 +20,65 @@
       {{ todo.priority }}
     </div>
   </div>
-  <button class="view-history small">View History</button>
-  <div class="todo-title">
-    <h2
-      (click)="toggleDisabled()"
-      (blur)="blurred()"
-      [contentEditable]="!titleDisabled"
-      (keydown.enter)="setTitle($event)"
+  <button class="view-history small" (click)="setVisible()">
+    View History
+  </button>
+  <div class="container">
+    <div class="todo-title">
+      <h2
+        (click)="toggleDisabled()"
+        (blur)="blurred()"
+        [contentEditable]="!titleDisabled"
+        (keydown.enter)="setTitle($event)"
+      >
+        {{ todo.title }}
+      </h2>
+      <p
+        (click)="toggleContentEditing()"
+        (blur)="blurred()"
+        [contentEditable]="!contentDisabled"
+        (keydown.enter)="setContent($event)"
+      >
+        {{ todo.content }}
+      </p>
+    </div>
+    <select
+      name="priority"
+      [(ngModel)]="todo.priority"
+      (change)="onChange('Update Priority')"
     >
-      {{ todo.title }}
-    </h2>
-    <p
-      (click)="toggleContentEditing()"
-      (blur)="blurred()"
-      [contentEditable]="!contentDisabled"
-      (keydown.enter)="setContent($event)"
+      <option value="P-0">P-0</option>
+      <option value="P-1">P-1</option>
+      <option value="P-2">P-2</option>
+      <option value="P-3">P-3</option>
+      <option value="P-4">P-4</option>
+    </select>
+    <input
+      name="date"
+      type="date"
+      [(ngModel)]="todo.dueDate"
+      (change)="onChange('Update Due Date')"
+    />
+    <select
+      name="status"
+      [(ngModel)]="todo.status"
+      (change)="onChange('Update Status')"
     >
-      {{ todo.content }}
-    </p>
+      <option value="Completed">Completed</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Todo">Todo</option>
+    </select>
   </div>
-  <select
-    name="priority"
-    [(ngModel)]="todo.priority"
-    (change)="onChange('Update Priority')"
-  >
-    <option value="P-0">P-0</option>
-    <option value="P-1">P-1</option>
-    <option value="P-2">P-2</option>
-    <option value="P-3">P-3</option>
-    <option value="P-4">P-4</option>
-  </select>
-  <input
-    name="date"
-    type="date"
-    [(ngModel)]="todo.dueDate"
-    (change)="onChange('Update Due Date')"
-  />
-  <select
-    name="status"
-    [(ngModel)]="todo.status"
-    (change)="onChange('Update Status')"
-  >
-    <option value="Completed">Completed</option>
-    <option value="In Progress">In Progress</option>
-    <option value="Todo">Todo</option>
-  </select>
+  <div class="history-popup" [class.active]="viewingHistory">
+    <h4>Change history</h4>
+    <div class="history-view">
+      <div class="history-item" *ngFor="let action of todoHistory">
+        <div class="list-header">
+          <div class="list-thumb"></div>
+          <span class="title">{{ action.action }}</span>
+        </div>
+        <p>{{ action.oldValue }} <span> ➡️ </span> {{ action.newValue }}</p>
+      </div>
+    </div>
+  </div>
 </div>
