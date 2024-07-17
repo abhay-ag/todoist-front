@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private _apiUrl = 'http://54.253.29.158/user';
+  private _apiUrl = 'https://todoist-backend-7qgh.onrender.com/user';
   constructor(private http: HttpClient, private _router: Router) {}
 
   loginUser(user: UserAuth): Observable<AuthResponse> {
