@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './states/todo.reducer';
 import { DatePipe } from '@angular/common';
 import { CdatePipe } from './cdate.pipe';
+import { actionReducer } from './states/actions.reducer';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CdatePipe } from './cdate.pipe';
     DatePipe,
     StoreModule.forRoot({
       todos: todoReducer,
+      actions: actionReducer,
     }),
   ],
   providers: [provideHttpClient()],

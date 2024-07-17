@@ -18,12 +18,20 @@ export interface TodoEdit {
     | 'Update Due Date';
   oldValue: string;
   newValue: string;
-  id: string;
+  id?: string;
 }
 
 export interface todoState {
   todos: Todo[];
 }
+
+export interface actionState {
+  actions: TodoEdit[];
+}
+
+export const initalActionState: actionState = {
+  actions: [],
+};
 
 export const initialTodoState: todoState = {
   todos: [],
