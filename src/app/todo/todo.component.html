@@ -2,9 +2,11 @@
   <div class="todo-header">
     <h1>Todoist</h1>
     <div style="display: flex; align-items: center; gap: 4px">
-      <button (click)="setFormOpen()">New Task</button>
-      <button (click)="logout()">Logout</button>
-      <button (click)="exportData()">Export to csv</button>
+      <button (click)="setFormOpen()">&plus; Task</button>
+      <button (click)="exportData()">Export</button>
+      <button style="background-color: #ff4d4f" (click)="logout()">
+        Logout
+      </button>
     </div>
   </div>
   <div *ngIf="createTodoFormOpen" class="overlay">

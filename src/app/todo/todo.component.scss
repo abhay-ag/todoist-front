@@ -12,6 +12,10 @@
     z-index: 49;
     padding: 12px 24px;
     background-image: linear-gradient(to bottom, #fff 70%, transparent);
+
+    @media screen and (max-width: 480px) {
+      padding: 12px;
+    }
   }
 
   .filter-row {
