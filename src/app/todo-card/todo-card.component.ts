@@ -19,23 +19,12 @@ export class TodoCardComponent {
 
   todoHistory$: Observable<any[]>;
 
-  titleDisabled: boolean = true;
-  contentDisabled: boolean = true;
-
-  toggleDisabled() {
-    this.titleDisabled = false;
-  }
+  titleDisabled: boolean = false;
+  contentDisabled: boolean = false;
 
   blurred() {
-    this.titleDisabled = true;
-    this.contentDisabled = true;
-
     this.titleEl.nativeElement.innerText = this.oldTodo.title;
     this.contentEl.nativeElement.innerText = this.oldTodo.content;
-  }
-
-  toggleContentEditing() {
-    this.contentDisabled = false;
   }
 
   @Input() todo: any;
@@ -69,15 +58,19 @@ export class TodoCardComponent {
   }
 
   setTitle(e: any) {
-    this.todo = { ...this.todo, title: e.target.innerText };
-    this.titleDisabled = true;
-    this.onChange('Update Title');
+    e.preventDefault();
+    if (e.target.innerText !== this.todo.title) {
+      this.todo = { ...this.todo, title: e.target.innerText };
+      this.onChange('Update Title');
+    }
   }
 
   setContent(e: any) {
-    this.todo = { ...this.todo, content: e.target.innerText };
-    this.contentDisabled = true;
-    this.onChange('Update Content');
+    e.preventDefault();
+    if (e.target.innerText !== this.todo.content) {
+      this.todo = { ...this.todo, content: e.target.innerText };
+      this.onChange('Update Content');
+    }
   }
 
   onChange(action: TodoEdit['action']): any {

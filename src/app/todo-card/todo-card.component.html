@@ -27,18 +27,16 @@
     <div class="todo-title">
       <h2
         #title
-        (click)="toggleDisabled()"
         (blur)="blurred()"
-        [contentEditable]="!titleDisabled"
+        [contentEditable]="true"
         (keydown.enter)="setTitle($event)"
       >
         {{ todo.title }}
       </h2>
       <p
         #content
-        (click)="toggleContentEditing()"
         (blur)="blurred()"
-        [contentEditable]="!contentDisabled"
+        [contentEditable]="true"
         (keydown.enter)="setContent($event)"
       >
         {{ todo.content }}
