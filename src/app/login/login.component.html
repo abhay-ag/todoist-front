@@ -2,7 +2,7 @@
   <div class="login-card">
     <h1>Login</h1>
 
-    <form class="form">
+    <form (ngSubmit)="loginUser()" class="form">
       <div class="form-item">
         <label for="email">Email:</label>
         <input
@@ -21,7 +21,7 @@
           [required]="true"
         />
       </div>
-      <button (click)="loginUser()">Submit</button>
+      <button type="submit">Submit</button>
     </form>
     <div class="small">
       New User?

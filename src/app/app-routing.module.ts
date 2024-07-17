@@ -4,9 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
 import { TodoComponent } from './todo/todo.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: HomeComponent, title: 'Todoist' },
   { path: 'login', component: LoginComponent, title: 'Todoist | Login' },
   { path: 'signup', component: SignupComponent, title: 'Todoist | Signup' },
   {

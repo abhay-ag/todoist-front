@@ -14,6 +14,9 @@ export class LoginComponent {
   constructor(private _authService: AuthService, private _router: Router) {}
 
   loginUser() {
+    if (!this.userData.email || !this.userData.password) {
+      return;
+    }
     this._authService.loginUser(this.userData).subscribe(
       (e: any) => {
         if (e.token) {

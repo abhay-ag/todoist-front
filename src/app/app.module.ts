@@ -15,6 +15,7 @@ import { todoReducer } from './states/todo.reducer';
 import { DatePipe } from '@angular/common';
 import { CdatePipe } from './cdate.pipe';
 import { actionReducer } from './states/actions.reducer';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { actionReducer } from './states/actions.reducer';
     LoginComponent,
     SignupComponent,
     CdatePipe,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
