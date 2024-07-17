@@ -1,5 +1,14 @@
 <div class="todo-card">
   <div class="todo-created-at">
+    <!-- Created at: {{ todo.createdAt | cdate }} -->
+    <div
+      class="circle pill"
+      [class.inp]="imp"
+      [class.todo]="td"
+      [class.completed]="comp"
+    >
+      {{ todo.status }}
+    </div>
     <div
       class="circle"
       [class.P-0]="p0"
@@ -10,13 +19,6 @@
     >
       {{ todo.priority }}
     </div>
-    <div
-      class="circle"
-      [class.inp]="imp"
-      [class.todo]="td"
-      [class.completed]="comp"
-    ></div>
-    Created at: {{ todo.createdAt | cdate }}
   </div>
   <button class="view-history small">View History</button>
   <div class="todo-title">
