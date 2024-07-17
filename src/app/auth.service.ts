@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private _apiUrl = 'http://localhost:8080/user';
+  private _apiUrl = 'http://54.253.29.158/user';
   constructor(private http: HttpClient, private _router: Router) {}
 
   loginUser(user: UserAuth): Observable<AuthResponse> {

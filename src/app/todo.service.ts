@@ -7,7 +7,7 @@ import { Todo, TodoEdit } from './interfaces/TodoInterface';
   providedIn: 'root',
 })
 export class TodoService {
-  private _apiUrl = 'http://localhost:8080/todo';
+  private _apiUrl = 'http://54.253.29.158/todo';
   constructor(private http: HttpClient, private _authService: AuthService) {}
 
   getTodosForUser() {
